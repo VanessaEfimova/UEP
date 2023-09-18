@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Document</title>
+
+    <link rel="stylesheet" href="menu.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+
+      href="https://fonts.googleapis.com/css2?family=Inconsolata&family=Montserrat:wght@300&display=swap"
+
+      rel="stylesheet"
+
+    />
+
+  </head>
+
+  <body>
+
+    <header class="header">
+
+      <nav class="menu">
+
+        <ul class="menu__ul">
+
+          <li class="menu__li">
+
+
+          </li>
+
+        </ul>
+
+        <a href="index.html" class="menu__logo">ИМИ</a>
+
+        <a href="#" class="menu__signup">Ефимова Ванесса</a>
+
+        <a href="" class="btn menu__login">ИВТ-21-2</a>
+
+      </nav>
+
+    </header>
+
+  </body>
+<head>
+    <meta charset="UTF-8">
+    <title><center>Добавление теста</center></title>
+</head>
+<body>
+  <style>
+    body {
+      font-family: "Arial", cursive;
+    }
+    .question {
+      font-size: 24px;
+      margin-bottom: 18px;
+    }
+    .answer-input {
+      display: block;
+      margin-bottom: 10px;
+    }
+    .add-answer-button {
+      margin-top: 14px;
+    }
+    .submit-button {
+      margin-top: 15px;
+    }
+  </style>
+  <body bgcolor="05ffc5">
+    <h1><center>Лабораторная работа</center></h1>
+    <form id="testForm">
+        <label for="testName">Название теста:</label>
+        <input type="text" id="testName" required>
+        <br>
+        <button type="button" onclick="addQuestion()">Добавить вопрос</button>
+        <h2>   </h2>
+        <img src="mine.jpg" alt="" style="width: 400px;">
+    </form>
+
+    <script>
+        let questionCounter = 0;
+
+        function addQuestion() {
+            questionCounter++;
+            const form = document.getElementById("testForm");
+            const questionDiv = document.createElement("div");
+            questionDiv.innerHTML = `
+                <h3>Вопрос ${questionCounter}</h3>
+                <label for="question${questionCounter}">Вопрос:</label>
+                <input type="text" id="question${questionCounter}" required>
+                <br>
+                <label for="answer1">Вариант ответа 1:</label>
+                <input type="text" id="answer1" required>
+                <input type="checkbox" name="correctAnswer" value="1">
+                <br>
+                <label for="answer2">Вариант ответа 2:</label>
+                <input type="text" id="answer2" required>
+                <input type="checkbox" name="correctAnswer" value="2">
+                <br>
+                <button type="button" onclick="addAnswer()">Добавить еще вариант ответа</button>
+                <button type="button" onclick="removeQuestion(${questionCounter})">Удалить вопрос</button>
+                <br>
+
+
+            `;
+            form.appendChild(questionDiv);
+        }
+
+        function addAnswer() {
+            const currentQuestionDiv = event.target.parentNode;
+            const answerCount = currentQuestionDiv.querySelectorAll('input[type="text"]').length / 2;
+            const newAnswerNumber = answerCount + 1;
+            const newAnswerDiv = document.createElement("div");
+            newAnswerDiv.innerHTML = `
+                <label for="answer${newAnswerNumber}">Вариант ответа ${newAnswerNumber}:</label>
+                <input type="text" id="answer${newAnswerNumber}" required>
+                <input type="checkbox" name="correctAnswer" value="${newAnswerNumber}">
+                <br>
+            `;
+            currentQuestionDiv.insertBefore(newAnswerDiv, event.target);
+        }
+
+        function removeQuestion(questionNumber) {
+            const form = document.getElementById("testForm");
+            const questionDiv = document.getElementById(`question${questionNumber}`);
+            form.removeChild(questionDiv.parentNode);
+        }
+    </script>
+    <div><center>
+    <p>Оставьте ваш отзыв пожалуйста:)</p>
+    <input>
+  </center>
+    </div>
+    <div>
+    <center>
+    <iframe  width="560" height="315" src="https://youtu.be/qz0aGYrrlhU"
+    title="source"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </center>
+  </iframe>
+</div>
+</body>
+</html>
